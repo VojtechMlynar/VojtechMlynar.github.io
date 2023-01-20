@@ -89,7 +89,7 @@ In similar sense as ADC, this does all necessary data conversion for DAC hardwar
 #### Description
 This subsystem packages PS7 IP core (representing ARM processor in the PL) and DMA subsystem. DMA subsystem is probably going to evolve, so make sure to read changelog if you upgrade the DMA IP core in your design. 
 ##### DMA operation
-In the background, the procedure of recording data into RAM requires Xilinx DMA IP core (with Scatter-Gather engine) and throttle IP core module. Throttle IP core adds necessary signalling to convert continuous stream to AXI-Stream protocol. To initiate data recording, both throttle and DMA must be configured appropriately via the ARM processor (documented in [[../ARM/Server library|Server library]]). By default, data transfer is initiated from AXI interface (i.e. by processor), but it can also be configured to wait for hardware signal (in the PL itself) instead.
+In the background, the procedure of recording data into RAM requires Xilinx DMA IP core (with Scatter-Gather engine) and throttle IP core module. Throttle IP core adds necessary signalling to convert continuous stream to AXI-Stream protocol. To initiate data recording, both throttle and DMA must be configured appropriately via the ARM processor (documented in [[Server library]]). By default, data transfer is initiated from AXI interface (i.e. by processor), but it can also be configured to wait for hardware signal (in the PL itself) instead.
 
 
 
