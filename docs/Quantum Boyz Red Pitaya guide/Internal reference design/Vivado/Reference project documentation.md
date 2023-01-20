@@ -11,7 +11,7 @@ This reference project should serve as both a reference material and template fo
 [^2]: Analog<->Digital conversion, memory access and processor interface 
 
 #### Decision tree for what you can modify:
-![[RefProjectDecisionTree.excalidraw|800]]
+![[RefProjectDecisionTree.excalidraw.png]]
 
 ---
 ## Subsystems
