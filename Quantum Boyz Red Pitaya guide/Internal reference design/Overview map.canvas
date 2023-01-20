@@ -1,0 +1,23 @@
+{
+	"nodes":[
+		{"id":"869fc2ac87eacbd1","x":-760,"y":-360,"width":280,"height":60,"color":"2","type":"text","text":"## FPGA (Programmable logic - PL)"},
+		{"id":"d98fe4298ebd4467","x":-420,"y":-240,"width":280,"height":172,"type":"text","text":"### C-based server\n- memory access and manipulation\n- less time-critical signal processing"},
+		{"id":"08559bd3b7386671","x":-760,"y":-240,"width":280,"height":220,"type":"text","text":"### Signal processing and low level routing \n- e.g. data recording, digital I/O\n- Coded either in HDL (Verilog, VHDL) or generated from Simulink"},
+		{"id":"94c44be501886793","x":-420,"y":-360,"width":280,"height":60,"color":"2","type":"text","text":"## ARM (Processing system - PS)"},
+		{"id":"e3bc17ddebd970d7","x":-40,"y":-369,"width":281,"height":78,"color":"2","type":"text","text":"## Client application\n- e.g Matlab TCP client"},
+		{"id":"2a0bac4c2f70af34","x":-600,"y":-569,"width":300,"height":100,"color":"1","type":"text","text":"# System on Chip (Red Pitaya)\n\n"},
+		{"id":"d340fc38600d179f","x":-1121,"y":-355,"width":260,"height":50,"type":"text","text":"### Analog and digital peripherals"}
+	],
+	"edges":[
+		{"id":"7e97656d4f4a1f58","fromNode":"2a0bac4c2f70af34","fromSide":"bottom","toNode":"869fc2ac87eacbd1","toSide":"top"},
+		{"id":"e7a11896e1456dae","fromNode":"2a0bac4c2f70af34","fromSide":"bottom","toNode":"94c44be501886793","toSide":"top"},
+		{"id":"f618d68da4d0e093","fromNode":"94c44be501886793","fromSide":"bottom","toNode":"d98fe4298ebd4467","toSide":"top"},
+		{"id":"d3bc2e72283798d8","fromNode":"869fc2ac87eacbd1","fromSide":"bottom","toNode":"08559bd3b7386671","toSide":"top"},
+		{"id":"f92aaa81f3786aed","fromNode":"94c44be501886793","fromSide":"right","toNode":"e3bc17ddebd970d7","toSide":"left"},
+		{"id":"717d9ebfaad4e2f4","fromNode":"e3bc17ddebd970d7","fromSide":"left","toNode":"94c44be501886793","toSide":"right"},
+		{"id":"1e042d06b93ae528","fromNode":"94c44be501886793","fromSide":"left","toNode":"869fc2ac87eacbd1","toSide":"right"},
+		{"id":"ceb9d68e8b7f2ad3","fromNode":"869fc2ac87eacbd1","fromSide":"right","toNode":"94c44be501886793","toSide":"left"},
+		{"id":"8bd36e77994e93df","fromNode":"d340fc38600d179f","fromSide":"right","toNode":"869fc2ac87eacbd1","toSide":"left"},
+		{"id":"24f49c5c8545714c","fromNode":"869fc2ac87eacbd1","fromSide":"left","toNode":"d340fc38600d179f","toSide":"right"}
+	]
+}

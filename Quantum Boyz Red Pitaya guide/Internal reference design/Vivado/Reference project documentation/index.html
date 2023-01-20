@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../ARM/Server%20library/" rel="prev"/>
+<link href="../../../Issues/Adding%20folder%20as%20IP%20repository/" rel="next"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.6" name="generator"/>
+<title>Reference project documentation - obsidian-mkdocs template</title>
+<link href="../../../../assets/stylesheets/main.558e4712.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="pink" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#intro">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="obsidian-mkdocs template" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="obsidian-mkdocs template">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            obsidian-mkdocs template
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Reference project documentation
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="pink" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="blue" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="pink" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="obsidian-mkdocs template" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="obsidian-mkdocs template">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    obsidian-mkdocs template
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../..">
+        Obsidian Notes
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label aria-expanded="true" class="md-nav__link" for="__nav_2" tabindex="0">
+          Quantum Boyz Red Pitaya guide
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Quantum Boyz Red Pitaya guide" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Quantum Boyz Red Pitaya guide
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../FAQ/">
+        FAQ
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Intro/">
+        Intro
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label aria-expanded="false" class="md-nav__link" for="__nav_2_3" tabindex="0">
+          Dev
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Dev" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Dev
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Dev/Generating%20Tcl%20script%20for%20projects/">
+        Generating Tcl script for projects
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label aria-expanded="true" class="md-nav__link" for="__nav_2_4" tabindex="0">
+          Internal reference design
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Internal reference design" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Internal reference design
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" id="__nav_2_4_1" type="checkbox"/>
+<label aria-expanded="false" class="md-nav__link" for="__nav_2_4_1" tabindex="0">
+          ARM
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="ARM" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+          ARM
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ARM/Server%20library/">
+        Server library
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_2" id="__nav_2_4_2" type="checkbox"/>
+<label aria-expanded="true" class="md-nav__link" for="__nav_2_4_2" tabindex="0">
+          Vivado
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Vivado" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_2">
+<span class="md-nav__icon md-icon"></span>
+          Vivado
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Reference project documentation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Reference project documentation
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#intro">
+    Intro
+  </a>
+<nav aria-label="Intro" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#decision-tree-for-what-you-can-modify">
+    Decision tree for what you can modify:
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#subsystems">
+    Subsystems
+  </a>
+<nav aria-label="Subsystems" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adc_subsys">
+    ADC_subsys
+  </a>
+<nav aria-label="ADC_subsys" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interface">
+    Interface
+  </a>
+<nav aria-label="Interface" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#input">
+    Input
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#output">
+    Output
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#description">
+    Description
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#big-boy-functionality">
+    Big boy functionality
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dac_subsys">
+    DAC_subsys
+  </a>
+<nav aria-label="DAC_subsys" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interface_1">
+    Interface
+  </a>
+<nav aria-label="Interface" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#input_1">
+    Input
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#output_1">
+    Output
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#description_1">
+    Description
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ps7_w_dma_subsys">
+    PS7_w_DMA_subsys
+  </a>
+<nav aria-label="PS7_w_DMA_subsys" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interface_2">
+    Interface
+  </a>
+<nav aria-label="Interface" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#input_2">
+    Input
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#output_2">
+    Output
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#description_2">
+    Description
+  </a>
+<nav aria-label="Description" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dma-operation">
+    DMA operation
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label aria-expanded="false" class="md-nav__link" for="__nav_2_5" tabindex="0">
+          Issues
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Issues" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Issues
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Issues/Adding%20folder%20as%20IP%20repository/">
+        Adding folder as IP repository
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Issues/Memory-mapped%20address%20mess/">
+        Memory mapped address mess
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Issues/Model%20composer%20default%20Matlab/">
+        Model composer default Matlab
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Issues/Rebuilding%20reference%20project/">
+        Rebuilding reference project
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#intro">
+    Intro
+  </a>
+<nav aria-label="Intro" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#decision-tree-for-what-you-can-modify">
+    Decision tree for what you can modify:
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#subsystems">
+    Subsystems
+  </a>
+<nav aria-label="Subsystems" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adc_subsys">
+    ADC_subsys
+  </a>
+<nav aria-label="ADC_subsys" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interface">
+    Interface
+  </a>
+<nav aria-label="Interface" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#input">
+    Input
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#output">
+    Output
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#description">
+    Description
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#big-boy-functionality">
+    Big boy functionality
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dac_subsys">
+    DAC_subsys
+  </a>
+<nav aria-label="DAC_subsys" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interface_1">
+    Interface
+  </a>
+<nav aria-label="Interface" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#input_1">
+    Input
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#output_1">
+    Output
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#description_1">
+    Description
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ps7_w_dma_subsys">
+    PS7_w_DMA_subsys
+  </a>
+<nav aria-label="PS7_w_DMA_subsys" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interface_2">
+    Interface
+  </a>
+<nav aria-label="Interface" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#input_2">
+    Input
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#output_2">
+    Output
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#description_2">
+    Description
+  </a>
+<nav aria-label="Description" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dma-operation">
+    DMA operation
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1>Reference project documentation</h1>
+<h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">¶</a></h2>
+<p>This reference project should serve as both a reference material and template for other implementations. As a rule of thumb, you are free to modify/delete any light-blue IP cores and any interconnection to/from/between them. There are three subsystems (dark-blue<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>) that provide basic functionality<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, unless you have a specific requirement, you shouldn't have to do any modifications in any of them. </p>
+<h4 id="decision-tree-for-what-you-can-modify">Decision tree for what you can modify:<a class="headerlink" href="#decision-tree-for-what-you-can-modify" title="Permanent link">¶</a></h4>
+<p><img alt="RefProjectDecisionTree.excalidraw.png" src="../RefProjectDecisionTree.excalidraw.png"/></p>
+<hr/>
+<h2 id="subsystems">Subsystems<a class="headerlink" href="#subsystems" title="Permanent link">¶</a></h2>
+<h3 id="adc_subsys">ADC_subsys<a class="headerlink" href="#adc_subsys" title="Permanent link">¶</a></h3>
+<h4 id="interface">Interface<a class="headerlink" href="#interface" title="Permanent link">¶</a></h4>
+<h5 id="input">Input<a class="headerlink" href="#input" title="Permanent link">¶</a></h5>
+<ul>
+<li>adc_dat_i_a/b[15:0]<ul>
+<li>Input ports of analog-digital converter, only upper 14 bits are usable. </li>
+<li>Format 0x0000...0x3FFF (1V...-1V)</li>
+</ul>
+</li>
+<li>adc_clk_i_a/b<ul>
+<li>Differential clock lines synchronized with ADC - <strong>Do not use directly</strong>!</li>
+</ul>
+</li>
+</ul>
+<h5 id="output">Output<a class="headerlink" href="#output" title="Permanent link">¶</a></h5>
+<ul>
+<li>adc_clk<ul>
+<li>125MHz Clock generated from differential ADC clock, free to use this one</li>
+</ul>
+</li>
+<li>adc_cdcs_o<ul>
+<li>??? but do not modify and/or disconnect</li>
+</ul>
+</li>
+<li>out_ADC_CH1/2[13:0] <ul>
+<li>14 bit analog input voltages in 2's complement format, 125 Msps (new sample every 8ns)</li>
+<li>Numbering corresponds to numbers printed on Red Pitaya PCB</li>
+</ul>
+</li>
+</ul>
+<h4 id="description">Description<a class="headerlink" href="#description" title="Permanent link">¶</a></h4>
+<p>This module takes care of conversion of two things: First is converting signal from parallel lines of external ADC into 2's complement format and the second is generating single-line clock signal from differential clock. Additional hidden functionality explained in the next section.</p>
+<p>Keep in mind that hardware analog-&gt;digital conversion takes around 100ns, meaning when voltage appears on AIN connector, it takes 100ns before it propagates to the FPGA (programmable logic) itself. </p>
+<h4 id="big-boy-functionality">Big boy functionality<a class="headerlink" href="#big-boy-functionality" title="Permanent link">¶</a></h4>
+<p>Upon expanding the subsystem, apart of signal slicing, there is RTL module axis_red_pitaya_adc_v1_0 which is based on Pavel Demin's ADC and it provides additional functionality of offsetting the signals by constant value. Provide desired offset to ports offset_a/b in 14bit 2's complement format.</p>
+<p><code>Bypass</code> signal controls whether the addition is performed
+- 0 - addition bypassed
+- 1 - addition performed</p>
+<p>Note: Saturation check is in place, meaning if the addition operation was to over/underflow, it is rather capped at maximum/minimum value of 14 bit (fractional) integer. </p>
+<hr/>
+<h3 id="dac_subsys">DAC_subsys<a class="headerlink" href="#dac_subsys" title="Permanent link">¶</a></h3>
+<h4 id="interface_1">Interface<a class="headerlink" href="#interface_1" title="Permanent link">¶</a></h4>
+<h5 id="input_1">Input<a class="headerlink" href="#input_1" title="Permanent link">¶</a></h5>
+<ul>
+<li>data_DAC_CH1/2[13:0]<ul>
+<li>Signals to be written to analog output ports. </li>
+<li>14 bit 2's complement</li>
+</ul>
+</li>
+<li>aclk<ul>
+<li>Clock that the DAC (actual hardware component) will be synchronized to</li>
+<li>Usually recommended to be connected to ADC clock, but can be run from fclk (PS7 clock as well)</li>
+</ul>
+</li>
+</ul>
+<h5 id="output_1">Output<a class="headerlink" href="#output_1" title="Permanent link">¶</a></h5>
+<ul>
+<li>dac_xxx<ul>
+<li>interface for DAC component, do not modify </li>
+</ul>
+</li>
+</ul>
+<h4 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">¶</a></h4>
+<p>In similar sense as ADC, this does all necessary data conversion for DAC hardware component. It also generates doubled clock (dac_clk = 2 x aclk) from aclk port. Provide inputs in 2's complement format. <code>aclk</code> port should be connected to the clock domain where signals data_DAC_CH1/2 originate from. </p>
+<hr/>
+<h3 id="ps7_w_dma_subsys">PS7_w_DMA_subsys<a class="headerlink" href="#ps7_w_dma_subsys" title="Permanent link">¶</a></h3>
+<h4 id="interface_2">Interface<a class="headerlink" href="#interface_2" title="Permanent link">¶</a></h4>
+<h5 id="input_2">Input<a class="headerlink" href="#input_2" title="Permanent link">¶</a></h5>
+<ul>
+<li>dma_input_CH1/2[31:0]<ul>
+<li>Input port for the data you want to record into external RAM (the big one)</li>
+<li>Bit-format of the data doesn't matter, it is parsed 1:1 into the memory and then you have to postprocess to extract the signals</li>
+</ul>
+</li>
+<li>wr_clk<ul>
+<li>Clock associated with dma_input_CH1/2 signals</li>
+</ul>
+</li>
+<li>trigger_in_hw<ul>
+<li>optional functionality to trigger DMA packet with PL signal instead of AXI register</li>
+<li>valid trigger signal is transition from 0 to 1</li>
+<li>new trigger signal ignored until current transfer is completed</li>
+</ul>
+</li>
+</ul>
+<h5 id="output_2">Output<a class="headerlink" href="#output_2" title="Permanent link">¶</a></h5>
+<ul>
+<li>clk<ul>
+<li>also <code>fclk</code> - 125 MHz clock synchronized with the ARM processor and AXI bus</li>
+<li><strong>IMPORTANT</strong>: phase between this clock and ADC clock is undeterministic, so make sure to treat clock-domain crossing appropriately</li>
+</ul>
+</li>
+<li>aresetn<ul>
+<li>reset signal generated by the processor</li>
+<li>Active-low (0-reset, 1-no reset)</li>
+</ul>
+</li>
+<li>M00_AXI<ul>
+<li>AXI4 interface connected usually to your generated IP core</li>
+</ul>
+</li>
+<li>DDR, FIXED_IO<ul>
+<li>do not delete, do not modify!</li>
+<li>if DDR connection is severed, than the ARM processor is disconnected from the RAM as well, meaning you have to hard-reset Red Pitaya to get linux and everything back. </li>
+</ul>
+</li>
+</ul>
+<h4 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">¶</a></h4>
+<p>This subsystem packages PS7 IP core (representing ARM processor in the PL) and DMA subsystem. DMA subsystem is probably going to evolve, so make sure to read changelog if you upgrade the DMA IP core in your design. </p>
+<h5 id="dma-operation">DMA operation<a class="headerlink" href="#dma-operation" title="Permanent link">¶</a></h5>
+<p>In the background, the procedure of recording data into RAM requires Xilinx DMA IP core (with Scatter-Gather engine) and throttle IP core module. Throttle IP core adds necessary signalling to convert continuous stream to AXI-Stream protocol. To initiate data recording, both throttle and DMA must be configured appropriately via the ARM processor (documented in <a href="../../ARM/Server%20library/">Server library</a>). By default, data transfer is initiated from AXI interface (i.e. by processor), but it can also be configured to wait for hardware signal (in the PL itself) instead.</p>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>Dark-blue are considered subsystems <em>ADC_subsys</em>, <em>DAC_subsys</em>, <em>PS7_w_DMA_subsys</em> <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:2">
+<p>Analog&lt;-&gt;Digital conversion, memory access and processor interface <a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+<script src="../../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>
