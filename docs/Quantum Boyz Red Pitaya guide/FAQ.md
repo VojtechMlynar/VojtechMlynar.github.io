@@ -4,6 +4,9 @@
 	- [[Rebuilding reference project]]
 - ## How to set IP repository
 	- [[Adding folder as IP repository]]
+- ## How to access AXI4-Lite registers from processor
+	- [[Memory-mapped address mess]]
+
 
 
 #### Tags: #Internal_RP_Guide 
