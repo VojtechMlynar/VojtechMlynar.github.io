@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+        <head>
+                <!-- Page information -->
+                <meta charset="UTF-8" />
+                <meta name="node_id" content="red pitaya guide/internal reference design/vivado/reference project documentation">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="shortcut icon" href="/favicon.ico" />
+
+                <!-- Set title -->
+                <title>Obsidian-Html/Notes</title>
+
+                <!-- Includes -->
+                
+<script src="/obs.html/static/obsidian_core.js"></script>
+<script src="/obs.html/static/encoding.js"></script>
+<link rel="stylesheet" href="/obs.html/static/master.css" />
+<script src="/obs.html/static/mermaid.9.0.1.min.js"></script>
+<script>
+  MathJax = {
+    loader: {
+      load: [
+        '[tex]/action',
+        'output/chtml',
+        '[tex]/centernot'
+      ]
+    },
+    tex: {
+      inlineMath: [ ["\\(","\\)"] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true,
+      packages: {'[+]': ['centernot']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script src="/obs.html/static/flexsearch.bundle.js"></script>
+<script src="/obs.html/static/pako.js"></script>
+<script src="/obs.html/static/search.js"></script>
+<script src="/obs.html/static/dirtree.js"></script>
+
+
+                <!-- Onload tweaks -->
+                <script>
+                        const CURRENT_NODE = 'red pitaya guide/internal reference design/vivado/reference project documentation';
+                        const HTML_URL_PREFIX = '';
+                        const PAGE_DEPTH = 3;
+                </script>
+        </head>
+
+<body class="theme-obs-light">
+        <div id="antiflash" style="display: none;"></div>
+        <script>
+                document.getElementById('antiflash').style.display = 'block';
+        </script>
+        <div id="search-master-div">
+    <div id="search-slab" king_ramses="return the slaaab">
+            <div id="search-controls">
+                    <input id="search_string" placeholder="Type to search notes" type="text" />
+                    <div class="tooltip" style="display: none;">
+                        <input type="checkbox" id="hard_search" name="hard" />
+                        <span class="tooltiptext">Hard search (require exact match)</span>
+                    </div>
+                    <div id="search-results-box">
+                        <div id="search-results"></div>
+                    </div>
+                    <div id="search-instructions">
+                        <div class="prompt-instruction">
+                                <b>esc</b> to dismiss
+                        </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("search-master-div").addEventListener('click', e => {
+            if(e.target !== e.currentTarget){
+                    return
+            }
+            toggle_id('search-master-div');
+    })
+    document.getElementById("search_string").addEventListener("input", function(event) {
+            setTimeout( () =>run_search('search_string', 'hard_search'), 100 );
+    }); 
+    document.getElementById("hard_search").addEventListener("click", function(event) {
+            setTimeout( () =>run_search('search_string', 'hard_search'), 100 );
+    });
+
+    window.addEventListener('keydown', e => {
+        if((e.key=='Escape'||e.key=='Esc'||e.keyCode==27)){
+            toggle_id('search-master-div');
+            return false;
+        } 
+    }, true);
+
+    function click_list_link(element){
+        element.parentElement.getElementsByTagName('a')[0].click()
+    }
+</script>
+
+        <div id="page_holder" class="flex_col">
+                <div id="header" class="header">
+    <div id="header_flex" class="flex_row">
+            <a href="/index.html" id="homelink" title="Clear screen and go to homepage">Obsidian-Html/Notes</a>
+            <div id="menu_toggle_button" class="navbar-button requires_js" onclick="toggle_menu()">
+                    ≡
+            </div>
+            <div id="navbar" class="navbar requires_js">
+                    
+                    <div class="icon-tray">
+                            <div id="theme-button" class="theme-button requires_js" title="Change theme" onclick="toggle_theme_popup(this)">
+    T
+</div>
+<script>
+    function toggle_theme_popup(el){
+        // make theme button show that it's active by adding the .active class
+        toggle(el);
+
+        // show the theme selector
+        toggle_id('theme-popup')
+
+        let h2 = document.getElementById('header2')
+        if (h2){
+            let pu = document.getElementById('header2').getElementsByClassName('popup')[0];
+            toggle(pu);
+        }
+    }
+
+    function disable_theme_popup(){
+        disable_id('theme-button');
+
+        // show the theme selector
+        disable_id('theme-popup')
+
+        let h2 = document.getElementById('header2')
+        if (h2){
+            let pu = document.getElementById('header2').getElementsByClassName('popup')[0];
+            disable(pu);
+        }
+    }
+</script>
+                                    <div onclick="openSearch()" class="theme-button requires_js">
+                <img src = "/obs.html/static/search.svg" alt="Search notes" title="Search notes" style="margin: 4px;"/>
+        </div>
+        <script>
+                function openSearch(){
+                        // toggle search popup and continue with extra code if it is enabled this time
+                        if (toggle_id('search-master-div')){
+                                // clear input and put focus on it so that we can start typing immediately
+                                let ss = document.getElementById('search_string');
+                                ss.value = '';
+                                ss.focus()
+                                ss.select()
+                        }
+                }
+        </script>
+                                    <div class="graph_header_div requires_js">
+            <a id="graph_link" class="system-link" href="/obs.html/graph/index.html?node=red pitaya guide/internal reference design/vivado/reference project documentation" title="Open fullpage Graph">
+                    <img class="graph_header_div_svg" src = "/obs.html/static/graph.svg" alt="Open fullpage Graph" style="margin: 2px; width: 17px;"/>
+            </a>
+        </div>
+                                    <div >
+            <a id="dirtree_link" class="system-link" href="/obs.html/dir_index.html" title="View directory tree">
+                    <img src = "/obs.html/static/dirtree.svg" style="width: 12px; padding: 4px;" alt="Directory tree link"/>
+            </a>
+        </div>
+                            <div>
+    <a href="/obs.html/tags/index.html" title="Open tag view">
+            <img src = "/obs.html/static/hashtag.svg" alt="RSS Feed link" style="width: 24px; margin-left: -2px; margin-top: -2px;"/>
+    </a>
+</div>
+                            
+                    </div>
+                    <div style="display: flex; flex-direction:column">
+                        <div id="left_pane_toggle_nav" class="left_pane_toggle_nav">Toggle Directory Tree Pane</div>
+                        <div id="right_pane_toggle_nav" class="right_pane_toggle_nav">Toggle Table of Contents Pane</div>
+                    </div>
+            </div>
+    </div>
+    <div class="popup" id="theme-popup">
+    <label for="cars">Theme </label>
+
+    <select name="theme" id="theme" onchange="set_theme(this.value)">
+      <option value="light">light</option>
+      <option value="obs-light" selected="selected">obsidian-light</option>
+      <option value="obs-dark">obsidian-dark</option>
+    </select> 
+</div>
+</div>
+                <div class="flex_row">
+                        <div id="left_pane" class="left_pane active">
+    <div id="left_pane_fold_header" class="left_pane_fold_header fold_header">x</div>
+    <div id="left_pane_content" class="left_pane_content">
+            <div class="dirtree"><button id="folder-1" class="dir-button" onclick="toggle_dir(this.id)">Red Pitaya Guide</button>
+<div id="folder-container-1" class="dir-container requires_js active" path="/Red Pitaya Guide">
+	<button id="folder-2" class="dir-button" onclick="toggle_dir(this.id)">Internal reference design</button>
+	<div id="folder-container-2" class="dir-container requires_js active" path="/Red Pitaya Guide/Internal reference design">
+		<button id="folder-3" class="dir-button" onclick="toggle_dir(this.id)">ARM</button>
+		<div id="folder-container-3" class="dir-container requires_js " path="/Red Pitaya Guide/Internal reference design/ARM">
+			<ul class="dir-list">
+				<li><a class="" href="/Red Pitaya Guide/Internal reference design/ARM/Server library.html"  >Server library</a></li>
+			</ul>
+		</div>
+		<button id="folder-4" class="dir-button" onclick="toggle_dir(this.id)">Vivado</button>
+		<div id="folder-container-4" class="dir-container requires_js active" path="/Red Pitaya Guide/Internal reference design/Vivado">
+			<ul class="dir-list">
+				<li><a class="" href="/Red Pitaya Guide/Internal reference design/Vivado/RefProjectDecisionTree.excalidraw.png"  class="external-link">RefProjectDecisionTree.excalidraw</a></li>
+				<li><a class="active" href="/Red Pitaya Guide/Internal reference design/Vivado/Reference project documentation.html"  >Reference project documentation</a></li>
+			</ul>
+		</div>
+		<ul class="dir-list">
+		</ul>
+	</div>
+	<button id="folder-5" class="dir-button" onclick="toggle_dir(this.id)">Issues</button>
+	<div id="folder-container-5" class="dir-container requires_js " path="/Red Pitaya Guide/Issues">
+		<ul class="dir-list">
+			<li><a class="" href="/Red Pitaya Guide/Issues/Adding folder as IP repository.html"  >Adding folder as IP repository</a></li>
+			<li><a class="" href="/Red Pitaya Guide/Issues/Compiling and running C app for Red Pitaya.html"  >Compiling and running C app for Red Pitaya</a></li>
+			<li><a class="" href="/Red Pitaya Guide/Issues/Connecting to Red Pitaya via Ethernet.html"  >Connecting to Red Pitaya via Ethernet</a></li>
+			<li><a class="" href="/Red Pitaya Guide/Issues/DMA operation for data recording.html"  >DMA operation for data recording</a></li>
+			<li><a class="" href="/Red Pitaya Guide/Issues/Memory-mapped address mess.html"  >Memory-mapped address mess</a></li>
+			<li><a class="" href="/Red Pitaya Guide/Issues/Model composer default Matlab.html"  >Model composer default Matlab</a></li>
+			<li><a class="" href="/Red Pitaya Guide/Issues/Rebuilding reference project.html"  >Rebuilding reference project</a></li>
+			<li><a class="" href="/Red Pitaya Guide/Issues/Red Pitaya reserved DDR memory patch.html"  >Red Pitaya reserved DDR memory patch</a></li>
+			<li><a class="" href="/Red Pitaya Guide/Issues/Running bash script for compilation.html"  >Running bash script for compilation</a></li>
+		</ul>
+	</div>
+	<ul class="dir-list">
+		<li><a class="" href="/Red Pitaya Guide/FAQ.html"  >FAQ</a></li>
+	</ul>
+</div>
+<ul class="dir-list">
+	<li><a class="" href="/index.html"  >index</a></li>
+</ul>
+</div>
+    </div>
+</div>
+                        <div class="container">
+                                <embeddedtitle>Reference project documentation</embeddedtitle>
+<div class="content"><h2 id="intro">Intro</h2>
+<p>This reference project should serve as both a reference material and template for other implementations. As a rule of thumb, you are free to modify/delete any light-blue IP cores and any interconnection to/from/between them. There are three subsystems (dark-blue<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>) that provide basic functionality<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, unless you have a specific requirement, you shouldn't have to do any modifications in any of them.    </p>
+<h4 id="decision-tree-for-what-you-can-modify">Decision tree for what you can modify:</h4>
+<p><img alt="" src="/Red%20Pitaya%20Guide/Internal%20reference%20design/Vivado/RefProjectDecisionTree.excalidraw.png" />   </p>
+<hr />
+<h2 id="subsystems">Subsystems</h2>
+<h3 id="adc_subsys">ADC_subsys</h3>
+<h4 id="interface">Interface</h4>
+<h5 id="input">Input</h5>
+<ul>
+<li><strong>adc_dat_i_a/b[15:0]</strong>   <ul>
+<li>Input ports of analog-digital converter, only upper 14 bits are usable.    </li>
+<li>Format 0x0000...0x3FFF (1V...-1V)   </li>
+</ul>
+</li>
+<li><strong>adc_clk_i_a/b</strong>   <ul>
+<li>Differential clock lines synchronized with ADC - <strong>Do not use directly</strong>!   </li>
+</ul>
+</li>
+</ul>
+<h5 id="output">Output</h5>
+<ul>
+<li><strong>adc_clk</strong>   <ul>
+<li>125MHz Clock generated from differential ADC clock, free to use this one   </li>
+</ul>
+</li>
+<li><strong>adc_cdcs_o</strong>   <ul>
+<li>??? but do not modify and/or disconnect   </li>
+</ul>
+</li>
+<li><strong>out_ADC_CH1/2[13:0]</strong>    <ul>
+<li>14 bit analog input voltages in 2's complement format, 125 Msps (new sample every 8ns)   </li>
+<li>Numbering corresponds to numbers printed on Red Pitaya PCB   </li>
+</ul>
+</li>
+</ul>
+<h4 id="description">Description</h4>
+<p>This module takes care of conversion of two things: First is converting signal from parallel lines of external ADC into 2's complement format and the second is generating single-line clock signal from differential clock. Additional hidden functionality explained in the next section.   </p>
+<p>Keep in mind that hardware analog-&gt;digital conversion takes around 100ns, meaning when voltage appears on AIN connector, it takes 100ns before it propagates to the FPGA (programmable logic) itself.    </p>
+<h4 id="big-boy-functionality">Big boy functionality</h4>
+<p>Upon expanding the subsystem, apart of signal slicing, there is RTL module axis_red_pitaya_adc_v1_0 which is based on Pavel Demin's ADC and it provides additional functionality of offsetting the signals by constant value. Provide desired offset to ports offset_a/b in 14bit 2's complement format.   </p>
+<p><code>Bypass</code> signal controls whether the addition is performed   </p>
+<ul>
+<li>0 - addition bypassed   </li>
+<li>1 - addition performed   </li>
+</ul>
+<p>Note: Saturation check is in place, meaning if the addition operation was to over/underflow, it is rather capped at maximum/minimum value of 14 bit (fractional) integer.    </p>
+<hr />
+<h3 id="dac_subsys">DAC_subsys</h3>
+<h4 id="interface_1">Interface</h4>
+<h5 id="input_1">Input</h5>
+<ul>
+<li><strong>data_DAC_CH1/2[13:0]</strong>   <ul>
+<li>Signals to be written to analog output ports.    </li>
+<li>14 bit 2's complement   </li>
+</ul>
+</li>
+<li><strong>aclk</strong>   <ul>
+<li>Clock that the DAC (actual hardware component) will be synchronized to   </li>
+<li>Usually recommended to be connected to ADC clock, but can be run from fclk (PS7 clock as well)   </li>
+</ul>
+</li>
+</ul>
+<h5 id="output_1">Output</h5>
+<ul>
+<li><strong>dac_xxx</strong>   <ul>
+<li>interface for DAC component, do not modify    </li>
+</ul>
+</li>
+</ul>
+<h4 id="description_1">Description</h4>
+<p>In similar sense as ADC, this does all necessary data conversion for DAC hardware component. It also generates doubled clock (dac_clk = 2 x aclk) from aclk port. Provide inputs in 2's complement format. <code>aclk</code> port should be connected to the clock domain where signals data_DAC_CH1/2 originate from.    </p>
+<hr />
+<h3 id="ps7_w_dma_subsys">PS7_w_DMA_subsys</h3>
+<h4 id="interface_2">Interface</h4>
+<h5 id="input_2">Input</h5>
+<ul>
+<li><strong>dma_input_CH1/2[31:0]</strong>   <ul>
+<li>Input port for the data you want to record into external RAM (the big one)   </li>
+<li>Bit-format of the data doesn't matter, it is parsed 1:1 into the memory and then you have to postprocess to extract the signals   </li>
+</ul>
+</li>
+<li><strong>wr_clk</strong>   <ul>
+<li>Clock associated with dma_input_CH1/2 signals   </li>
+</ul>
+</li>
+<li><strong>trigger_in_hw</strong>   <ul>
+<li>optional functionality to trigger DMA packet with PL signal instead of AXI register   </li>
+<li>valid trigger signal is transition from 0 to 1   </li>
+<li>new trigger signal ignored until current transfer is completed   </li>
+</ul>
+</li>
+</ul>
+<h5 id="output_2">Output</h5>
+<ul>
+<li><strong>clk</strong>   <ul>
+<li>also <code>fclk</code> - 125 MHz clock synchronized with the ARM processor and AXI bus   </li>
+<li><strong>IMPORTANT</strong>: phase between this clock and ADC clock is undeterministic, so make sure to treat clock-domain crossing appropriately   </li>
+</ul>
+</li>
+<li><strong>aresetn</strong>   <ul>
+<li>reset signal generated by the processor   </li>
+<li>Active-low (0-reset, 1-no reset)   </li>
+</ul>
+</li>
+<li><strong>M00_AXI</strong>   <ul>
+<li>AXI4 interface connected usually to your generated IP core   </li>
+</ul>
+</li>
+<li><strong>DDR, FIXED_IO</strong>   <ul>
+<li>do not delete, do not modify!   </li>
+<li>if DDR connection is severed, than the ARM processor is disconnected from the RAM as well, meaning you have to hard-reset Red Pitaya to get linux and everything back.    </li>
+</ul>
+</li>
+</ul>
+<h4 id="description_2">Description</h4>
+<p>This subsystem packages PS7 IP core (representing ARM processor in the PL) and DMA subsystem. DMA subsystem is probably going to evolve, so make sure to read changelog if you upgrade the DMA IP core in your design.    </p>
+<h5 id="dma-operation">DMA operation</h5>
+<p>In the background, the procedure of recording data into RAM requires Xilinx DMA IP core (with Scatter-Gather engine) and throttle IP core module. Throttle IP core adds necessary signalling to convert continuous stream to AXI-Stream protocol. To initiate data recording, both throttle and DMA must be configured appropriately via the ARM processor (documented in <a href="/Red%20Pitaya%20Guide/Internal%20reference%20design/ARM/Server%20library.html">Server library</a>). By default, data transfer is initiated from AXI interface (i.e. by processor), but it can also be configured to wait for hardware signal (in the PL itself) instead.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Dark-blue are considered subsystems <em>ADC_subsys</em>, <em>DAC_subsys</em>, <em>PS7_w_DMA_subsys</em>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 0 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Analog&lt;-&gt;Digital conversion, memory access and processor interface&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+<div class="note-footer">
+<div class="backlinks">
+<h2>Backlinks</h2>
+<ul>
+	<li><a class="backlink" href="/index.html">index</a></li>
+</ul>
+</div>
+
+<div class="tags">
+
+</div>
+
+</div>
+<div class="graph requires_js ">
+    <div id="A238622840461819904891569150945776945101{level}" class="graph_div"></div>
+    
+    <div class="graph-button-row" style="display:flex;">
+        <button class="graph_button graph_show_button" id="B238622840461819904891569150945776945101{level}" level="{level}" note_temp_id="238622840461819904891569150945776945101" onclick="window.ObsHtmlGraph.run(this, '238622840461819904891569150945776945101', 'red pitaya guide/internal reference design/vivado/reference project documentation');">
+            Show Graph
+        </button>
+        <button class="graph_button graph_type_button" id="C238622840461819904891569150945776945101{level}" style="flex:1" onclick="window.ObsHtmlGraph.switch_graph_type(this);">
+            2D
+        </button>
+    </div>
+</div>
+
+<script type="module">
+    if (window.ObsHtmlGraph == undefined){
+        import('/obs.html/static/graph.js').then((Module) => {
+            window.ObsHtmlGraph = Module;
+            window.ObsHtmlGraph.arm_page(document.getElementById('page_holder'))
+        })
+    }
+</script>
+
+
+
+
+                                <!-- end content -->
+                        </div>
+                        <div class="container_filler">
+                        </div>
+                        <div id="right_pane" class="right_pane active">
+    <div id="right_pane_fold_header" class="right_pane_fold_header fold_header">x</div>
+    <div id="right_pane_content" class="right_pane_content">
+            
+    </div>
+</div>
+                </div>
+        </div>
+
+        <script>
+                function handle_toggle_side_bar(e){
+                        let header;
+                        let pane; 
+                        let target = e.target
+
+                        // switch out the navbar button click for a header click
+                        if (target.id == 'left_pane_toggle_nav'){
+                                target = document.getElementById('left_pane_fold_header')
+                        }
+                        else if (target.id == 'right_pane_toggle_nav'){
+                                target = document.getElementById('right_pane_fold_header')
+                        }
+
+                        // get header and pane
+                        if (target.classList.contains('fold_header')) {
+                                header = target;
+                                pane = target.parentElement;
+                        }
+                        else {
+                                pane = target;
+                                header = target.getElementsByClassName('fold_header')[0];
+                        }
+                        toggle_side_bar(pane, header, true)
+                        e.stopPropagation();
+                }
+                function handle_toggle_side_bar_button(e){
+                        document.getElementById('menu_toggle_button').click()
+                        handle_toggle_side_bar(e);
+                }
+
+                function toggle_side_bar(pane, header, save) {
+                        let active = (pane.classList.contains('active'))
+                        if (active){
+                                disable_side_bar(pane, header, save);
+                        }
+                        else {
+                                enable_side_bar(pane, header, save);
+                        }
+                }
+                function enable_side_bar(pane, header, save){
+                        pane.classList.add('active');
+                        pane.removeEventListener('click', handle_toggle_side_bar);
+                        header.addEventListener('click', handle_toggle_side_bar);
+                        set_correct_header_symbol(header);
+                        if (save){ save_panel_folding_state(header, true) }
+                }
+                function disable_side_bar(pane, header, save){
+                        pane.classList.remove('active');
+                        pane.addEventListener('click', handle_toggle_side_bar);
+                        header.removeEventListener('click', handle_toggle_side_bar);
+                        set_correct_header_symbol(header);
+                        if (save){ save_panel_folding_state(header, false) }
+                }
+                function set_correct_header_symbol(header){
+                        let pane = header.parentElement;
+                        let symbol = [['>', '<'],['<', '>']]
+                        symbol = symbol[Number(header.classList.contains('right_pane_fold_header'))][Number(pane.classList.contains('active'))];
+                        console.log(symbol);
+                        header.innerHTML = symbol
+                        return header;
+                }
+                function panel_folding_get_panel_name(header){
+                        return ['left', 'right'][Number(header.classList.contains('right_pane_fold_header'))]
+                }
+                function save_panel_folding_state(header, active){
+                        ls_set('pane_folding_state_'+panel_folding_get_panel_name(header), Number(active));
+                }
+                function load_panel_folding_state(panel_name){
+                        val = ls_get('pane_folding_state_'+panel_name)
+                        if (!val){ return {'exists': false, 'value': null}}
+                        return {'exists': true, 'value': Boolean(Number(val))}
+                }
+                function set_pane_folding_start(left_header, right_header){
+                        // small screen = closed
+                        let right_pane_enabled = true;
+                        let left_pane_enabled = true;
+                        let w = window.visualViewport.width
+                        if (w < 1000){
+                                left_pane_enabled = false
+                        }
+                        if (w < 800){
+                                right_pane_enabled = false
+                        }
+
+                        // get saved values if present
+                        let rval = load_panel_folding_state('right')
+                        if (rval['exists']){
+                                right_pane_enabled = rval['value']
+                        }
+                        let lval = load_panel_folding_state('left')
+                        if (lval['exists']){
+                                left_pane_enabled = lval['value']
+                        }
+
+                        // default = enabled, so we only need to disable
+                        if (!left_pane_enabled){
+                                disable_side_bar(document.getElementById('left_pane'), document.getElementById('left_pane_fold_header'))
+                        }
+                        if (!right_pane_enabled){
+                                disable_side_bar(document.getElementById('right_pane'), document.getElementById('right_pane_fold_header'))
+                        }
+                }
+
+                function init_pane_folding(header){
+                        set_correct_header_symbol(header);
+                        header.addEventListener('click', handle_toggle_side_bar);
+                }
+                
+                
+                set_pane_folding_start()
+                init_pane_folding(document.getElementById('left_pane_fold_header'));
+                init_pane_folding(document.getElementById('right_pane_fold_header'));
+
+                document.getElementById('left_pane_toggle_nav').addEventListener('click', handle_toggle_side_bar_button);
+                document.getElementById('right_pane_toggle_nav').addEventListener('click', handle_toggle_side_bar_button);
+        </script>
+
+        <script src="/obs.html/static/load_dirtree_footer.js" type="text/javascript"></script>
+
+        
+
+
+
+
+</body>
+</html>
