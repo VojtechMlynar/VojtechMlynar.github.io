@@ -5,7 +5,7 @@
         <head>
                 <!-- Page information -->
                 <meta charset="UTF-8" />
-                <meta name="node_id" content="none">
+                <meta name="node_id" content="setting up rust cross-compiling">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -47,9 +47,9 @@
 
                 <!-- Onload tweaks -->
                 <script>
-                        const CURRENT_NODE = 'none';
+                        const CURRENT_NODE = 'setting up rust cross-compiling';
                         const HTML_URL_PREFIX = '';
-                        const PAGE_DEPTH = 1;
+                        const PAGE_DEPTH = 2;
                 </script>
         </head>
 
@@ -161,7 +161,7 @@
                 }
         </script>
                                     <div class="graph_header_div requires_js">
-            <a id="graph_link" class="system-link" href="/obs.html/graph/index.html?node=none" title="Open fullpage Graph">
+            <a id="graph_link" class="system-link" href="/obs.html/graph/index.html?node=setting up rust cross-compiling" title="Open fullpage Graph">
                     <img class="graph_header_div_svg" src = "/obs.html/static/graph.svg" alt="Open fullpage Graph" style="margin: 2px; width: 17px;"/>
             </a>
         </div>
@@ -194,10 +194,11 @@
 </div>
 </div>
                 <div class="flex_row">
-                        
-                        <div class="container">
-                                <div class="dirtree"><button id="folder-1" class="dir-button" onclick="toggle_dir(this.id)">Red Pitaya Guide</button>
-<div id="folder-container-1" class="dir-container requires_js " path="/Red Pitaya Guide">
+                        <div id="left_pane" class="left_pane active">
+    <div id="left_pane_fold_header" class="left_pane_fold_header fold_header">x</div>
+    <div id="left_pane_content" class="left_pane_content">
+            <div class="dirtree"><button id="folder-1" class="dir-button" onclick="toggle_dir(this.id)">Red Pitaya Guide</button>
+<div id="folder-container-1" class="dir-container requires_js active" path="/Red Pitaya Guide">
 	<button id="folder-2" class="dir-button" onclick="toggle_dir(this.id)">Attachments</button>
 	<div id="folder-container-2" class="dir-container requires_js " path="/Red Pitaya Guide/Attachments">
 		<ul class="dir-list">
@@ -245,7 +246,7 @@
 		</ul>
 	</div>
 	<button id="folder-7" class="dir-button" onclick="toggle_dir(this.id)">Issues</button>
-	<div id="folder-container-7" class="dir-container requires_js " path="/Red Pitaya Guide/Issues">
+	<div id="folder-container-7" class="dir-container requires_js active" path="/Red Pitaya Guide/Issues">
 		<ul class="dir-list">
 			<li><a class="" href="/Red Pitaya Guide/Issues/Adding folder as IP repository.html"  >Adding folder as IP repository</a></li>
 			<li><a class="" href="/Red Pitaya Guide/Issues/Compiling and running C app for Red Pitaya.html"  >Compiling and running C app for Red Pitaya</a></li>
@@ -255,7 +256,7 @@
 			<li><a class="" href="/Red Pitaya Guide/Issues/Rebuilding reference project.html"  >Rebuilding reference project</a></li>
 			<li><a class="" href="/Red Pitaya Guide/Issues/Red Pitaya reserved DDR memory patch.html"  >Red Pitaya reserved DDR memory patch</a></li>
 			<li><a class="" href="/Red Pitaya Guide/Issues/Running bash script for compilation.html"  >Running bash script for compilation</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Issues/Setting up Rust Cross-compiling.html"  >Setting up Rust Cross-compiling</a></li>
+			<li><a class="active" href="/Red Pitaya Guide/Issues/Setting up Rust Cross-compiling.html"  >Setting up Rust Cross-compiling</a></li>
 		</ul>
 	</div>
 	<ul class="dir-list">
@@ -267,14 +268,103 @@
 	<li><a class="" href="/index.html"  >index</a></li>
 </ul>
 </div>
-<div class="graph requires_js hidden">
-    <div id="A250485248329832563063063967096083094393{level}" class="graph_div"></div>
+    </div>
+</div>
+                        <div class="container">
+                                <embeddedtitle>Setting up rust cross-compiling</embeddedtitle>
+<div class="content"><h2 id="what-is-rust">What is Rust</h2>
+<p>Rust is a rather new system programming language which was designed to be able to compile and run efficient code and be memory safe. This means, that writing code in Rust is much more resilient against writing code which is unsafe in terms of memory safety. This makes developing in Rust much more stable and less prone to run-time errors then programming in other low-level languages - for example good-ol' C.   </p>
+<p>Apart from the fact that Rust provides a reliable and efficient way of memory-safe programming, it comes with a lot of other tools which ease your live as a systems programmer. For example Rust includes a whole dependency management system named <strong>Cargo</strong>, which helps you to incorporate third-party libraries on the fly, without the need of a compcated build system. Furthermore you can easily search for available libraries called <strong>crates on</strong> <a href="/not_created.html" class="nonexistent-link">https://crates.io/</a>   </p>
+<p>More detailed description and and a lot of additional information on how to get started can be found on: <a href="/not_created.html" class="nonexistent-link">https://www.rust-lang.org/</a>   </p>
+<p>For users coming from other programming languages, starter guide book is available: <a href="/not_created.html" class="nonexistent-link">https://doc.rust-lang.org/book/</a>   </p>
+<h2 id="install-rust-on-your-host-machine">Install Rust on your host machine</h2>
+<p>A detailed explanation on how to install rust on your windows machine is provided here: <br />
+<a href="/not_created.html" class="nonexistent-link">https://doc.rust-lang.org/book/ch01-01-installation.html</a>   </p>
+<h2 id="setup-a-new-rust-project-with-cargo">Setup a new Rust project with cargo</h2>
+<p>Starting a new rustproject is suuuper easy!  Just navigate to the folder, where you want to start a new project, open a command promt and enter:   </p>
+<div class="lang-cmd">
+
+<div class="codehilite"><pre><span></span><code>cargo new (APPLICATION NAME)
+</code></pre></div>
+
+
+</div>
+
+<p>and e value, you created a new rustproject.   </p>
+<h2 id="set-up-tools-for-cross-compilation">Set up tools for cross-compilation</h2>
+<p>Crosscompiling in rust is farely as well easy compared to other low level programming languages   </p>
+<p>Since the whole project setup is manged by your cargo enviroment you just need to set the correct build tools and linkers and the rest is managed by cargo.   </p>
+<p>To now set the build tools you need to run serveral commands in a promt which you open up in your project.   </p>
+<p>The first command calls the rust setup manager (rustup) to add the correct build tools for the target enviroment. In case of the Redpitaya it is a 32bit ARM-Cortex processor running linux. Therefore you need to run:   </p>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>rustup<span class="w"> </span>target<span class="w"> </span>add<span class="w"> </span>arm-unknown-linux-gnueabihf
+</code></pre></div>
+
+
+</div>
+
+<p>Since Rust does not come with a standalone linker the next thing you must do is to download linker tool which can be used by Rust. You can find one here:<a href="/not_created.html" class="nonexistent-link">https://releases.linaro.org/components/toolchain/binaries/latest-5/arm-linux-gnueabihf/</a>   </p>
+<p>There you download the <em>mingw32_arm-linux-genueabihf.tat.xz</em> <br />
+You unzip this file to some arbitrary directory.    </p>
+<p>The you need to go to your rustproject again and open up a new folder named <code>.cargo</code> <br />
+in this folder you create a new file called <code>config.toml</code>   </p>
+<p>Open this file and enter:   </p>
+<div class="lang-rust">
+
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">build</span><span class="p">]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;arm-unknown-linux-gnueabihf&quot;</span>
+
+<span class="p">[</span><span class="n">target</span><span class="p">.</span><span class="n">arm</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnueabihf</span><span class="p">]</span>
+<span class="n">linker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;C:/your_linker_path/gcc-linaro-5.5.0-2017.10-i686-mingw32_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc.exe&quot;</span>
+</code></pre></div>
+
+
+</div>
+
+<p>where you replace the path in the linker variable with your own one.   </p>
+<p>Now you just need to go back to the command promt again and run:   </p>
+<div class="lang-cmd">
+
+<div class="codehilite"><pre><span></span><code>cargo build --release
+</code></pre></div>
+
+
+</div>
+
+<p>or:   </p>
+<div class="lang-cmd">
+
+<div class="codehilite"><pre><span></span><code>cargo build --debug
+</code></pre></div>
+
+
+</div>
+
+<p>depending wether you want to use a debug or a release build.   </p>
+<p>If the compile process exits successfully you can navigate to the target folder in your project folder where a new path named <code>/arm-linux-gnueabihf</code> should be generated. Navigate into this path and copy the binary file there to the filesystem of the RedPitaya. Then you should be able to run it.   </p>
+<p>🎉 Congrats, you ran your first Rust program on the RedPitaya !!!!!!!!! 🎉</p></div>
+<div class="note-footer">
+<div class="backlinks">
+<h2>Backlinks</h2>
+<ul>
+	<li><a class="backlink" href="/Red Pitaya Guide/FAQ.html">red pitaya guide/faq</a></li>
+</ul>
+</div>
+
+<div class="tags">
+
+</div>
+
+</div>
+<div class="graph requires_js ">
+    <div id="A249722052165425345471728725435813316471{level}" class="graph_div"></div>
     
     <div class="graph-button-row" style="display:flex;">
-        <button class="graph_button graph_show_button" id="B250485248329832563063063967096083094393{level}" level="{level}" note_temp_id="250485248329832563063063967096083094393" onclick="window.ObsHtmlGraph.run(this, '250485248329832563063063967096083094393', 'dirtree');">
+        <button class="graph_button graph_show_button" id="B249722052165425345471728725435813316471{level}" level="{level}" note_temp_id="249722052165425345471728725435813316471" onclick="window.ObsHtmlGraph.run(this, '249722052165425345471728725435813316471', 'setting up rust cross-compiling');">
             Show Graph
         </button>
-        <button class="graph_button graph_type_button" id="C250485248329832563063063967096083094393{level}" style="flex:1" onclick="window.ObsHtmlGraph.switch_graph_type(this);">
+        <button class="graph_button graph_type_button" id="C249722052165425345471728725435813316471{level}" style="flex:1" onclick="window.ObsHtmlGraph.switch_graph_type(this);">
             2D
         </button>
     </div>
@@ -291,11 +381,17 @@
 
 
 
+
                                 <!-- end content -->
                         </div>
                         <div class="container_filler">
                         </div>
-                        
+                        <div id="right_pane" class="right_pane active">
+    <div id="right_pane_fold_header" class="right_pane_fold_header fold_header">x</div>
+    <div id="right_pane_content" class="right_pane_content">
+            
+    </div>
+</div>
                 </div>
         </div>
 
