@@ -7,10 +7,13 @@ var toc_pane_div = "right_pane_content";
 var dir_index_pane_div = "";
 var html_url_prefix = "";
 var CONFIGURED_HTML_URL_PREFIX = "";
+var CONFIG_ONLY_SHOW_FOR_MULTIPLE_HEADERS = 1;
+var CONFIG_CLOSE_RIGHT_PANE_IF_EMPTY = 1;
+var CONFIG_CLOSE_LEFT_PANE_IF_EMPTY = 0;
 var RELATIVE_PATHS = 0;
 var documentation_mode = 1;
 var tab_mode = !no_tab_mode;
-var gzip_hash = '308031928166248128078451697775578093333'                       // used to check whether the localStorage data is stale
+var gzip_hash = '70806530006733525960856805252873904154'                       // used to check whether the localStorage data is stale
 
 // global cache
 var fn_cache_ls_available = null;
@@ -96,8 +99,14 @@ function load_theme() {
     }
 
     let theme_name = ls_get('theme_name');
+
     if (!theme_name){
-        ls_set('theme_name', 'obs-light');
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            ls_set('theme_name', 'obs-dark');
+          } else {
+           
+            ls_set('theme_name', 'obs-light');
+          }
     }
     set_theme(ls_get('theme_name'));
     disable_antiflash();
@@ -146,12 +155,24 @@ function getParentContainer(el){
 
 function load_page() {
     // let page know that js is enabled
+    // ----------------------------------------------------------------------------
     signal_js_enabled(document.body)
 
-    if (documentation_mode) {
-        //httpGetAsync(html_url_prefix + '/obs.html/data/graph.json', load_dirtree_as_left_pane, 0, false);
-    }
 
+    // Continuous observers
+    // ----------------------------------------------------------------------------
+    const resize_ob = new ResizeObserver(function(entries) {
+        // resize the container height every time the header height changes
+        let containers = document.querySelectorAll(".container");
+        containers.forEach(container => {
+            setContentHeight(container);
+        });
+    });
+    resize_ob.observe(document.getElementById('header'));
+
+
+    // Custom hooks and loads
+    // ----------------------------------------------------------------------------
     let collection = document.getElementsByClassName("container")
     if (collection.length > 0) {
         LoadTableOfContents(collection[0])
@@ -165,7 +186,6 @@ function load_page() {
         for (let i = 0; i < links.length; i++) {
             let l = links[i];
             if (l.getAttribute("href").includes('#')) {
-
                 l.onclick = function () {
                     // remove current url from the link
                     let current_url = document.URL
@@ -186,9 +206,10 @@ function load_page() {
                     // we scroll to the anchor
                     // we do this manually because scrolling divs suck
                     let levelcont = document.getElementsByClassName("container")[0];
+                    let header = document.getElementById("header")
                     var el = levelcont.querySelectorAll(link.replaceAll(':', '\\:'))[0];
                     if (el) {
-                        getParentContainer(el).scrollTop = el.offsetTop - rem(6);
+                        getParentContainer(el).scrollTop = el.offsetTop - (rem(1) + header.getBoundingClientRect().height) 
                         el.classList.add('fade-it');
                         setTimeout(function() {
                             el.classList.remove('fade-it');
@@ -252,30 +273,56 @@ function LoadTableOfContents(container_div)
     let collection = container_div.getElementsByClassName('toc')
     if (collection.length > 0) {
         let toc = collection[0];
-        if (toc.getElementsByTagName('li').length > 1) {
+        if (!CONFIG_ONLY_SHOW_FOR_MULTIPLE_HEADERS || toc.getElementsByTagName('li').length > 1) {
 
             if (toc_pane_div && no_tab_mode) {
                 let tpd = document.getElementById(toc_pane_div);
                 tpd.display = 'block';
                 tpd.innerHTML = '<span class="toc-header">Table of contents</span>' + '<div class="toc-contents">' + collection[0].innerHTML + '</div>';
+                toc.remove();
             }
             else {
                 toc.style.display = 'block';
                 toc.innerHTML = '<h3>Table of Contents</h1>\n' + toc.innerHTML
             }
         }
+        else{
+            toc.remove();
+        }
     }
 
 }
 
 function SetSidePanes() {
-    let lp = document.getElementById('left_pane_content');
+    let lp = document.getElementById('left_pane');
+    let lpc = document.getElementById('left_pane_content');
     if (lp){
-        SetContainer(lp)
+        if (CONFIG_CLOSE_LEFT_PANE_IF_EMPTY){
+            CloseSidePaneIfEmpty(lp, lpc);
+        }
     }
-    let rp = document.getElementById('right_pane_content');
+    if (lpc){
+        SetContainer(lpc)
+    }
+
+    let rp = document.getElementById('right_pane');
+    let rpc = document.getElementById('right_pane_content');
     if (rp){
-        SetContainer(rp)
+        if (CONFIG_CLOSE_RIGHT_PANE_IF_EMPTY){
+            CloseSidePaneIfEmpty(rp, rpc);
+        }
+    }
+    if (rpc){
+        SetContainer(rpc)
+    }
+}
+
+function CloseSidePaneIfEmpty(pane_div, pane_content_div) {
+    if (!pane_content_div){
+        pane_div.classList.remove("active");
+    } 
+    if (pane_content_div && pane_content_div.innerHTML.trim() == ""){
+        pane_div.classList.remove("active");
     }
 }
 
@@ -292,10 +339,13 @@ function SetContainer(container) {
     // Set click to get header link
     SetHeaders(container);
 
+    // wrap images in links so we can easily open the actual size (unless it is already wrapped by a link)
+    wrap_imgs_with_links(container);
+
     // Load mermaid code
-    if (mermaid_enabled){
-        mermaid.init()
-    }
+    // if (mermaid_enabled){
+    //     mermaid.init()
+    // }
 
     // callout divs are created with class 'active' to have them folded open by default
     // when js is enabled (in this case) this class is removed so the callouts are folded closed until clicked on
@@ -312,6 +362,9 @@ function SetContainer(container) {
     // requires_js can be set on elements that need to be hidden unless js is enabled
     // this block will remove the requires_js class from all elements
     signal_js_enabled(container)
+
+    // adjust container height so content does not fall off screen
+    setContentHeight(container)
 
     // set graph svg and button to have unique id across tabs
     let graph_div = container.querySelectorAll(".graph_div");
@@ -330,6 +383,13 @@ function SetContainer(container) {
         graph_type_button[0].id = graph_type_button[0].id.replace('{level}', container.level)
     }
 
+    let graph_instructions = container.querySelectorAll(".graph-instructions");
+    if (graph_instructions.length == 1) {
+        graph_instructions[0].id = graph_instructions[0].id.replace('{level}', container.level)
+    }
+
+    style_checklist(container);
+
     if (window.ObsHtmlGraph){
         window.ObsHtmlGraph.arm_page(container)
     }
@@ -339,7 +399,6 @@ function SetContainer(container) {
 function SetHeaders(container) {
     let content = container.getElementsByClassName('content')
     let els = container.childNodes;
-    console.log(content)
     if (content.length > 0){
         content = content[0]
         els = content.childNodes;
@@ -508,6 +567,10 @@ function disable(el){
     }
 }
 
+function setContentHeight(container){
+    const height = document.getElementById('header').offsetHeight;
+    container.style.height = `calc(100vh - ${height}px - 2rem)`;
+}
 
 // standard
 function cl_toggle_id(id, class_name){
@@ -527,8 +590,65 @@ function toggle_id(id){
     return toggle(document.getElementById(id))
 }
 function toggle(el){
-    return cl_toggle(el, 'active') 
+    return cl_toggle(el, 'active')
 }
 
 
+function toggle_callout(el){
+    cl_toggle(el, 'active')
+    cl_toggle(el, 'inactive')
+}
+
+function style_checklist(element){
+    let li_items = element.querySelectorAll("li");
+    for (let i=0; i<li_items.length;i++){
+        let li = li_items[i];
+
+        // apply on subitems, otherwise these may be overwritten
+        let sub_li_items = li.querySelectorAll("li");
+        if (sub_li_items.length > 0){
+            style_checklist(li);
+        }
+
+        // style list
+        if (li.innerHTML.slice(0, 3) == "[ ]"){
+            li.innerHTML = li.innerHTML.replace("[ ]", '<div class="unchecked">⬜</div>');
+            li.classList.add("checklist-item");
+        }
+        else if (li.innerHTML.slice(0, 3) == "[x]"){
+            li.innerHTML = li.innerHTML.replace("[x]", '<div class="checked">✔</div>');
+            li.classList.add("checklist-item");
+        }
+    }
+}
+
+function isPartOfLink(element) {
+	// Check if any parent element is a link
+	let parentElement = element.parentElement;
+	while (parentElement !== null) {
+	  if (parentElement.tagName === 'A') {
+		return true;
+	  }
+	  parentElement = parentElement.parentElement;
+	}
+  
+	// If no link element found, return false
+	return false;
+}
+
+function wrap_imgs_with_links(container) {
+	[...container.getElementsByTagName("img")].forEach(img => {
+		// don't wrap if image already is wrapped in a link
+		if (isPartOfLink(img)){ return; }
+
+		// create link wrapper
+		let wrapper = document.createElement('a');
+		wrapper.setAttribute('href',img.src);
+		wrapper.setAttribute("target", "_blank");
+		
+		// put img in link
+		img.parentNode.insertBefore(wrapper, img);
+		wrapper.appendChild(img);
+	});
+}
 

@@ -10,14 +10,22 @@
                 <link rel="shortcut icon" href="/favicon.ico" />
 
                 <!-- Set title -->
-                <title>Obsidian-Html/Notes</title>
+                <title>QuantumPeepz/RedPitayaGuide</title>
 
                 <!-- Includes -->
-                
-<script src="/obs.html/static/obsidian_core.js"></script>
+                <script src="/obs.html/static/obsidian_core.js"></script>
 <script src="/obs.html/static/encoding.js"></script>
 <link rel="stylesheet" href="/obs.html/static/master.css" />
-<script src="/obs.html/static/mermaid.9.0.1.min.js"></script>
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+            'securityLevel': 'loose',
+            'theme': 'dark',
+            'themeVariables': {
+                    'darkMode': true,
+            }
+    });
+</script>
 <script>
   MathJax = {
     loader: {
@@ -45,6 +53,8 @@
 <script src="/obs.html/static/dirtree.js"></script>
 
 
+
+
                 <!-- Onload tweaks -->
                 <script>
                         const CURRENT_NODE = 'creating external clock';
@@ -70,8 +80,8 @@
                         <div id="search-results"></div>
                     </div>
                     <div id="search-instructions">
-                        <div class="prompt-instruction">
-                                <b>esc</b> to dismiss
+                        <div class="prompt-instruction mobile">
+                            <button onclick="toggle_id('search-master-div');"><b>Close</b> Search </button>
                         </div>
                     </div>
             </div>
@@ -107,7 +117,7 @@
         <div id="page_holder" class="flex_col">
                 <div id="header" class="header">
     <div id="header_flex" class="flex_row">
-            <a href="/index.html" id="homelink" title="Clear screen and go to homepage">Obsidian-Html/Notes</a>
+            <a href="/index.html" id="homelink" title="Clear screen and go to homepage">QuantumPeepz/RedPitayaGuide</a>
             <div id="menu_toggle_button" class="navbar-button requires_js" onclick="toggle_menu()">
                     ≡
             </div>
@@ -146,19 +156,29 @@
     }
 </script>
                                     <div onclick="openSearch()" class="theme-button requires_js">
-                <img src = "/obs.html/static/search.svg" alt="Search notes" title="Search notes" style="margin: 4px;"/>
+            <img src = "/obs.html/static/search.svg" alt="Search notes" title="Search notes" style="margin: 4px;"/>
         </div>
         <script>
-                function openSearch(){
-                        // toggle search popup and continue with extra code if it is enabled this time
-                        if (toggle_id('search-master-div')){
-                                // clear input and put focus on it so that we can start typing immediately
-                                let ss = document.getElementById('search_string');
-                                ss.value = '';
-                                ss.focus()
-                                ss.select()
-                        }
+            function openSearch(){
+                // toggle search popup and continue with extra code if it is enabled this time
+                if (toggle_id('search-master-div')){
+                    // get input field and temporarily disable it
+                    let ss = document.getElementById('search_string');
+                    ss.value = 'Seach data initializing...';
+                    ss.readOnly = true; 
+
+                    // load search data if not yet done so
+                    setTimeout(function(){
+                        LoadSearchData()
+
+                        // clear input and put focus on it so that we can start typing immediately
+                        ss.value = '';
+                        ss.readOnly = false; 
+                        ss.focus()
+                        ss.select()
+                    }, 100);
                 }
+            }
         </script>
                                     <div class="graph_header_div requires_js">
             <a id="graph_link" class="system-link" href="/obs.html/graph/index.html?node=creating external clock" title="Open fullpage Graph">
@@ -187,7 +207,6 @@
     <label for="cars">Theme </label>
 
     <select name="theme" id="theme" onchange="set_theme(this.value)">
-      <option value="light">light</option>
       <option value="obs-light" selected="selected">obsidian-light</option>
       <option value="obs-dark">obsidian-dark</option>
     </select> 
@@ -197,75 +216,87 @@
                         <div id="left_pane" class="left_pane active">
     <div id="left_pane_fold_header" class="left_pane_fold_header fold_header">x</div>
     <div id="left_pane_content" class="left_pane_content">
-            <div class="dirtree"><button id="folder-1" class="dir-button" onclick="toggle_dir(this.id)">Red Pitaya Guide</button>
+            <div id="dirtree"><button id="folder-1" class="dir-button active" onclick="toggle_dir(this.id)"><div class="file-icon"></div>Red Pitaya Guide</button>
 <div id="folder-container-1" class="dir-container requires_js active" path="/Red Pitaya Guide">
-	<button id="folder-2" class="dir-button" onclick="toggle_dir(this.id)">Attachments</button>
+	<button id="folder-2" class="dir-button " onclick="toggle_dir(this.id)"><div class="file-icon"></div>Attachments</button>
 	<div id="folder-container-2" class="dir-container requires_js " path="/Red Pitaya Guide/Attachments">
 		<ul class="dir-list">
-			<li><a class="" href="/Red Pitaya Guide/Attachments/RedPitaya.PNG"  class="external-link">RedPitaya</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/RedPitaya_web_server.PNG"  class="external-link">RedPitaya_web_server</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/RedPitaya_web_server_ip.PNG"  class="external-link">RedPitaya_web_server_ip</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/matlab_System_generator_Block.PNG"  class="external-link">matlab_System_generator_Block</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/matlab_System_generator_Block-clocking.PNG"  class="external-link">matlab_System_generator_Block-clocking</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/matlab_System_generator_Block_Ip_catalog.PNG"  class="external-link">matlab_System_generator_Block_Ip_catalog</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/matlab_umgebungsvariablen.PNG"  class="external-link">matlab_umgebungsvariablen</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/putty_connection_interface.PNG"  class="external-link">putty_connection_interface</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/putty_run_bitstream.PNG"  class="external-link">putty_run_bitstream</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/scematicsRedPitaya.svg"  class="external-link">scematicsRedPitaya</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/vivado_block_design.PNG"  class="external-link">vivado_block_design</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/vivado_generate_bitstream.PNG"  class="external-link">vivado_generate_bitstream</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/vivado_ip_catalog.PNG"  class="external-link">vivado_ip_catalog</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/vivado_template_project_path.PNG"  class="external-link">vivado_template_project_path</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/vivado_user_repository.PNG"  class="external-link">vivado_user_repository</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/winSCP_bitstream_file.PNG"  class="external-link">winSCP_bitstream_file</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Attachments/winSCP_login_to_redPitaya.PNG"  class="external-link">winSCP_login_to_redPitaya</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/RedPitaya.PNG"  class="external-link">RedPitaya.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/RedPitaya_web_server.PNG"  class="external-link">RedPitaya_web_server.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/RedPitaya_web_server_ip.PNG"  class="external-link">RedPitaya_web_server_ip.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/matlab_System_generator_Block.PNG"  class="external-link">matlab_System_generator_Block.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/matlab_System_generator_Block-clocking.PNG"  class="external-link">matlab_System_generator_Block-clocking.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/matlab_System_generator_Block_Ip_catalog.PNG"  class="external-link">matlab_System_generator_Block_Ip_catalog.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/matlab_umgebungsvariablen.PNG"  class="external-link">matlab_umgebungsvariablen.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/putty_connection_interface.PNG"  class="external-link">putty_connection_interface.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/putty_run_bitstream.PNG"  class="external-link">putty_run_bitstream.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/scematicsRedPitaya.svg"  class="external-link">scematicsRedPitaya.svg</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/vivado_block_design.PNG"  class="external-link">vivado_block_design.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/vivado_generate_bitstream.PNG"  class="external-link">vivado_generate_bitstream.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/vivado_ip_catalog.PNG"  class="external-link">vivado_ip_catalog.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/vivado_template_project_path.PNG"  class="external-link">vivado_template_project_path.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/vivado_user_repository.PNG"  class="external-link">vivado_user_repository.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/winSCP_bitstream_file.PNG"  class="external-link">winSCP_bitstream_file.PNG</a></li>
+			<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Attachments/winSCP_login_to_redPitaya.PNG"  class="external-link">winSCP_login_to_redPitaya.PNG</a></li>
 		</ul>
 	</div>
-	<button id="folder-3" class="dir-button" onclick="toggle_dir(this.id)">Dev</button>
+	<button id="folder-3" class="dir-button active" onclick="toggle_dir(this.id)"><div class="file-icon"></div>Dev</button>
 	<div id="folder-container-3" class="dir-container requires_js active" path="/Red Pitaya Guide/Dev">
 		<ul class="dir-list">
-			<li><a class="active" href="/Red Pitaya Guide/Dev/Creating external clock.html"  >Creating external clock</a></li>
+			<li><div class="file-icon"></div><a class="active current_page_dirtree" href="/Red Pitaya Guide/Dev/Creating external clock.html"  >Creating external clock</a></li>
 		</ul>
 	</div>
-	<button id="folder-4" class="dir-button" onclick="toggle_dir(this.id)">Internal reference design</button>
+	<button id="folder-4" class="dir-button " onclick="toggle_dir(this.id)"><div class="file-icon"></div>Internal reference design</button>
 	<div id="folder-container-4" class="dir-container requires_js " path="/Red Pitaya Guide/Internal reference design">
-		<button id="folder-5" class="dir-button" onclick="toggle_dir(this.id)">ARM</button>
+		<button id="folder-5" class="dir-button " onclick="toggle_dir(this.id)"><div class="file-icon"></div>ARM</button>
 		<div id="folder-container-5" class="dir-container requires_js " path="/Red Pitaya Guide/Internal reference design/ARM">
+			<button id="folder-6" class="dir-button " onclick="toggle_dir(this.id)"><div class="file-icon"></div>attachments</button>
+			<div id="folder-container-6" class="dir-container requires_js " path="/Red Pitaya Guide/Internal reference design/ARM/attachments">
+				<ul class="dir-list">
+					<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Internal reference design/ARM/attachments/config_structure.svg"  class="external-link">config_structure.svg</a></li>
+				</ul>
+			</div>
 			<ul class="dir-list">
-				<li><a class="" href="/Red Pitaya Guide/Internal reference design/ARM/Server library.html"  >Server library</a></li>
+				<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Internal reference design/ARM/Creating AXI interface with System generator (Model composer).html"  >Creating AXI interface with System generator (Model composer)</a></li>
+				<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Internal reference design/ARM/Overview of architecture.html"  >Overview of architecture</a></li>
+				<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Internal reference design/ARM/Reference design message overview.html"  >Reference design message overview</a></li>
+				<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Internal reference design/ARM/Server library.html"  >Server library</a></li>
 			</ul>
 		</div>
-		<button id="folder-6" class="dir-button" onclick="toggle_dir(this.id)">Vivado</button>
-		<div id="folder-container-6" class="dir-container requires_js " path="/Red Pitaya Guide/Internal reference design/Vivado">
+		<button id="folder-7" class="dir-button " onclick="toggle_dir(this.id)"><div class="file-icon"></div>Vivado</button>
+		<div id="folder-container-7" class="dir-container requires_js " path="/Red Pitaya Guide/Internal reference design/Vivado">
 			<ul class="dir-list">
-				<li><a class="" href="/Red Pitaya Guide/Internal reference design/Vivado/RefProjectDecisionTree.excalidraw.png"  class="external-link">RefProjectDecisionTree.excalidraw</a></li>
-				<li><a class="" href="/Red Pitaya Guide/Internal reference design/Vivado/Reference project documentation.html"  >Reference project documentation</a></li>
+				<li><div class="file-icon non-md-file"></div><a class="" href="/Red Pitaya Guide/Internal reference design/Vivado/RefProjectDecisionTree.excalidraw.png"  class="external-link">RefProjectDecisionTree.excalidraw.png</a></li>
+				<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Internal reference design/Vivado/Reference project documentation.html"  >Reference project documentation</a></li>
 			</ul>
 		</div>
 		<ul class="dir-list">
 		</ul>
 	</div>
-	<button id="folder-7" class="dir-button" onclick="toggle_dir(this.id)">Issues</button>
-	<div id="folder-container-7" class="dir-container requires_js " path="/Red Pitaya Guide/Issues">
+	<button id="folder-8" class="dir-button " onclick="toggle_dir(this.id)"><div class="file-icon"></div>Issues</button>
+	<div id="folder-container-8" class="dir-container requires_js " path="/Red Pitaya Guide/Issues">
 		<ul class="dir-list">
-			<li><a class="" href="/Red Pitaya Guide/Issues/Adding folder as IP repository.html"  >Adding folder as IP repository</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Issues/Compiling and running C app for Red Pitaya.html"  >Compiling and running C app for Red Pitaya</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Issues/DMA operation for data recording.html"  >DMA operation for data recording</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Issues/Memory-mapped address mess.html"  >Memory-mapped address mess</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Issues/Model composer default Matlab.html"  >Model composer default Matlab</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Issues/Rebuilding reference project.html"  >Rebuilding reference project</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Issues/Red Pitaya reserved DDR memory patch.html"  >Red Pitaya reserved DDR memory patch</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Issues/Running bash script for compilation.html"  >Running bash script for compilation</a></li>
-			<li><a class="" href="/Red Pitaya Guide/Issues/Setting up Rust Cross-compiling.html"  >Setting up Rust Cross-compiling</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/Adding folder as IP repository.html"  >Adding folder as IP repository</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/Compiling and running C app for Red Pitaya.html"  >Compiling and running C app for Red Pitaya</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/DMA operation for data recording.html"  >DMA operation for data recording</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/Git repository structure.html"  >Git repository structure</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/Memory-mapped address mess.html"  >Memory-mapped address mess</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/Model composer default Matlab.html"  >Model composer default Matlab</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/Reading 64bit value from 32bit register.html"  >Reading 64bit value from 32bit register</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/Rebuilding reference project.html"  >Rebuilding reference project</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/Red Pitaya reserved DDR memory patch.html"  >Red Pitaya reserved DDR memory patch</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/Running bash script for compilation.html"  >Running bash script for compilation</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/Setting up Rust Cross-compiling.html"  >Setting up Rust Cross-compiling</a></li>
+			<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/Issues/Vivado workflow with AXI4 IP core.html"  >Vivado workflow with AXI4 IP core</a></li>
 		</ul>
 	</div>
 	<ul class="dir-list">
-		<li><a class="" href="/Red Pitaya Guide/FAQ.html"  >FAQ</a></li>
-		<li><a class="" href="/Red Pitaya Guide/First steps.html"  >First steps</a></li>
+		<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/FAQ.html"  >FAQ</a></li>
+		<li><div class="file-icon"></div><a class="" href="/Red Pitaya Guide/First steps.html"  >First steps</a></li>
 	</ul>
 </div>
 <ul class="dir-list">
-	<li><a class="" href="/index.html"  >index</a></li>
+	<li><div class="file-icon"></div><a class="" href="/index.html"  >index</a></li>
 </ul>
 </div>
     </div>
@@ -283,23 +314,22 @@
 </div>
 
 <div class="callout callout-note active" rasa="1">
-<div class="callout-title">
+<div class="callout-title ">
 <div class="callout-title-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="callout-icon"><line x1="18" y1="2" x2="22" y2="6"></line><path d="M7.5 20.5L19 9l-4-4L3.5 16.5 2 22z"></path></svg>
 </div>
 <div class="callout-title-name">Note
 </div>
 </div>
-<div class="callout-content">
-<p>Note that when using only one of the pins of the differential input, clock has to be connected to the P pin of the pair. [UG865 p.16] <br />
-</p>
+<div class="callout-content"></div>
 </div>
-</div>
+<p>Note that when using only one of the pins of the differential input, clock has to be connected to the P pin of the pair. [UG865 p.16]   </p>
 <p>For Red Pitaya, clock-capable pins should be the following (according to the Z7020 Red Pitaya schematic)   </p>
 <table>
 <thead>
 <tr>
 <th>Package pin</th>
 <th>Suffix</th>
+<th>VCCO</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -307,108 +337,122 @@
 <tr>
 <td>U14</td>
 <td>SRCC_34</td>
+<td>1V8</td>
 <td>Daisy connector 1 P</td>
 </tr>
 <tr>
 <td>U15</td>
 <td>SRCC_34</td>
+<td>1V8</td>
 <td>Daisy connector 1 N</td>
 </tr>
 <tr>
 <td>N18</td>
 <td>MRCC_34</td>
-<td>Daisy connector 2 P</td>
+<td>1V8</td>
+<td>Daisy connector 3 P</td>
 </tr>
 <tr>
 <td>P19</td>
 <td>MRCC_34</td>
-<td>Daisy connector 2 N</td>
+<td>1V8</td>
+<td>Daisy connector 3 N</td>
 </tr>
 <tr>
 <td>L16</td>
 <td>SRCC_35</td>
+<td>3V3</td>
 <td>DIO_5_P</td>
 </tr>
 <tr>
 <td>L17</td>
 <td>SRCC_35</td>
+<td>3V3</td>
 <td>DIO_5_N</td>
 </tr>
 <tr>
 <td>K17</td>
 <td>MRCC_35</td>
+<td>3V3</td>
 <td>DIO_3_P</td>
 </tr>
 <tr>
 <td>K18</td>
 <td>MRCC_35</td>
+<td>3V3</td>
 <td>DIO_3_N</td>
 </tr>
 <tr>
 <td>H16</td>
 <td>MRCC_35</td>
+<td>3V3</td>
 <td>DIO_1_P</td>
 </tr>
 <tr>
 <td>H17</td>
 <td>MRCC_35</td>
+<td>3V3</td>
 <td>DIO_1_N</td>
 </tr>
 <tr>
 <td>J18</td>
 <td>SRCC_35</td>
+<td>3V3</td>
 <td>DIO_2_P</td>
 </tr>
 <tr>
 <td>H18</td>
 <td>SRCC_35</td>
+<td>3V3</td>
 <td>DIO_2_N</td>
 </tr>
 <tr>
 <td>Y7</td>
 <td>MRCC_13</td>
+<td>3V3</td>
 <td>DIO10_P</td>
 </tr>
 <tr>
 <td>Y6</td>
 <td>MRCC_13</td>
+<td>3V3</td>
 <td>DIO10_N</td>
 </tr>
 <tr>
 <td>Y9</td>
 <td>SRCC_13</td>
+<td>3V3</td>
 <td>DIO8_P</td>
 </tr>
 <tr>
 <td>Y8</td>
 <td>SRCC_13</td>
+<td>3V3</td>
 <td>DIO_8_N</td>
 </tr>
 </tbody>
 </table>
-<div class="callout callout-info active callout-folded" rasa="1">
-<div class="callout-title" onclick="toggle(this.parentElement)">
+<div class="callout callout-info active callout-folded inactive" rasa="1">
+<div class="callout-title " onclick="toggle_callout(this.parentElement)">
 <div class="callout-title-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="callout-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
 </div>
-<div class="callout-title-name">MRCC vs SRCC <br />
+<div class="callout-title-name">MRCC vs SRCC (click to expand) <br />
 </div>
 <div class="callout-title-fold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ChevronDown"><polyline points="6 9 12 15 18 9"></polyline>
 </div>
 </div>
 <div class="callout-content">
 <p>The clock capable pins in a 7 series FPGA serve two purposes; access to the local clocking resources and access to the global clocking resources. <br />
-</p>
-<p>If you are using the global clocking resources (BUFG, BUFH, MMCM, PLL) then the MRCC and SRCC have exactly the same capability - there is no difference between the two. <br />
-</p>
-<p>If you are using the local clocking resources (BUFR and BUFIO), then then the SRCC and MRCC can both only drive only the BUFIO and BUFR located in the same clock region. The BUFIO can then only drive the IOB flip-flops and high speed clock of the ISERDES in the same I/O bank and the BUFR can clock all the logic (except the high speed clock of the ISERDES) in the same clock region. <br />
-</p>
-<blockquote>
-<p>The only difference between the SRCC and MRCC is that the MRCC can also drive the BUFMR. The BUFMR can then drive the BUFIO/BUFR in the same clock region as well as in the clock regions above and below the MRCC. This would generally be used for "ChipSync" (source synchronous) interfaces that need to use more pins than are available in one I/O bank. <br />
-</p>
-<p>That being said, if you don't need the extra functionality of the BUFMR, then it is probably best to use the SRCC pins first.   </p>
-<p><em>Copied from:</em> <a href="https://support.xilinx.com/s/question/0D52E00006hpeH4SAI/mrcc-or-srcc?language=en_US" class="external-link">https://support.xilinx.com/s/question/0D52E00006hpeH4SAI/mrcc-or-srcc?language=en_US</a>  <br />
-</p>
-</blockquote>
+<br />
+If you are using the global clocking resources (BUFG, BUFH, MMCM, PLL) then the MRCC and SRCC have exactly the same capability - there is no difference between the two. <br />
+<br />
+If you are using the local clocking resources (BUFR and BUFIO), then then the SRCC and MRCC can both only drive only the BUFIO and BUFR located in the same clock region. The BUFIO can then only drive the IOB flip-flops and high speed clock of the ISERDES in the same I/O bank and the BUFR can clock all the logic (except the high speed clock of the ISERDES) in the same clock region. <br />
+<br />
+The only difference between the SRCC and MRCC is that the MRCC can also drive the BUFMR. The BUFMR can then drive the BUFIO/BUFR in the same clock region as well as in the clock regions above and below the MRCC. This would generally be used for "ChipSync" (source synchronous) interfaces that need to use more pins than are available in one I/O bank. <br />
+<br />
+That being said, if you don't need the extra functionality of the BUFMR, then it is probably best to use the SRCC pins first. <br />
+<br />
+<em>Copied from:</em> <a href="https://support.xilinx.com/s/question/0D52E00006hpeH4SAI/mrcc-or-srcc?language=en_US" class="external-link">https://support.xilinx.com/s/question/0D52E00006hpeH4SAI/mrcc-or-srcc?language=en_US</a></p>
 </div>
 </div>
 <h1 id="implementing-external-clock-in-vivado">Implementing external clock in Vivado</h1>
@@ -472,13 +516,17 @@
 
 </div>
 <div class="graph requires_js ">
-    <div id="A135408469223606176209233217159506414922{level}" class="graph_div"></div>
+    <div id="A295299338773596185923588105160549798908{level}" class="graph_div"></div>
+
+    <div class="graph-instructions" id="D295299338773596185923588105160549798908{level}">
+        Left-click: follow link, Right-click: select node, Scroll: zoom
+    </div>
     
     <div class="graph-button-row" style="display:flex;">
-        <button class="graph_button graph_show_button" id="B135408469223606176209233217159506414922{level}" level="{level}" note_temp_id="135408469223606176209233217159506414922" onclick="window.ObsHtmlGraph.run(this, '135408469223606176209233217159506414922', 'creating external clock');">
+        <button class="graph_button graph_show_button" id="B295299338773596185923588105160549798908{level}" level="{level}" note_temp_id="295299338773596185923588105160549798908" onclick="window.ObsHtmlGraph.run(this, '295299338773596185923588105160549798908', 'creating external clock');">
             Show Graph
         </button>
-        <button class="graph_button graph_type_button" id="C135408469223606176209233217159506414922{level}" style="flex:1" onclick="window.ObsHtmlGraph.switch_graph_type(this);">
+        <button class="graph_button graph_type_button" id="C295299338773596185923588105160549798908{level}" style="flex:1" onclick="window.ObsHtmlGraph.switch_graph_type(this);">
             2D
         </button>
     </div>
